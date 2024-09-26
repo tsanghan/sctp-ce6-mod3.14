@@ -1,6 +1,6 @@
 # "service" is the name of this project. This will also be added to your AWS resource names.
 
-service: tsanghan-ce6-dynamodb-sqs-service-mod314
+service: tsanghan-ce6-dynamodb-sqs-svc-m314
 
 frameworkVersion: '4'
 
