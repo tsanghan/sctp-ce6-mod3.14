@@ -1,0 +1,61 @@
+# "service" is the name of this project. This will also be added to your AWS resource names.
+
+service: tsanghan-ce6-dynamodb-sqs-service
+
+frameworkVersion: '4'
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  stage: dev
+  region: ap-southeast-1
+  environment:
+    TABLE_NAME: ${self:custom.dynamodbTableName}
+    QUEUE_URL:
+      Ref: SQSQueue
+  iam:
+    role:
+      statements:
+        - Effect: 'Allow'
+          Action:
+            - dynamodb:PutItem
+          Resource:
+            - { 'Fn::GetAtt': [DynamoDBTable, Arn] }
+        - Effect: 'Allow'
+          Action:
+            - sqs:SendMessage
+          Resource:
+            - { 'Fn::GetAtt': [SQSQueue, Arn] }
+
+functions:
+  app:
+    handler: handler.handler
+    events:
+      - httpApi:
+          path: /
+          method: post
+
+resources:
+  Resources:
+    DynamoDBTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        TableName: ${self:custom.dynamodbTableName}
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+    SQSQueue:
+      Type: 'AWS::SQS::Queue'
+      Properties:
+        QueueName: ${self:custom.sqsQueueName}
+
+custom:
+  dynamodbTableName: tsanghan-ce6-dynamodb-table-${self:provider.stage}
+  sqsQueueName: tsanghan-ce6-sqs-queue-${self:provider.stage}
+
+plugins:
+  - serverless-offline
