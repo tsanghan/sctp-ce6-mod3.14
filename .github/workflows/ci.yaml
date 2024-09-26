@@ -37,7 +37,7 @@ jobs:
       - name: Run unit testing command
         run: npm test
 
-  scan-depandancy:
+  scan-dependencies:
     runs-on: ubuntu-latest
     needs: unit-testing
     steps:
@@ -48,7 +48,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: scan-depandancy
+    needs: scan-dependencies
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4

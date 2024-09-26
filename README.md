@@ -1,8 +1,8 @@
-# sctp-ce6-mod3.12
+# sctp-ce6-mod3.14
 
 [![CICD for Serverless Application](https://github.com/tsanghan/sctp-ce6-mod3.12/actions/workflows/ci.yaml/badge.svg)](https://github.com/tsanghan/sctp-ce6-mod3.14/actions/workflows/ci.yaml)
 
-This repo container code and workflow pipeline for SCTP CE6 Mod3.12
+This repo container code and workflow pipeline for SCTP CE6 Mod3.14 (a rehash of Mod3.12) with `npm audit` added in CI pipeline/workflow.
 
 Since we are having a Node application and utlising Serverless Framwwork for deploymen tto AWS Lambda, we will beuing `npm`.
 
@@ -36,7 +36,7 @@ GitHub Action Workflow Pipline implemented is as follow;
 4) `code-unit-testing`
 5) `deploy`
 
-![GitHub Action Workflow Pipline](https://github.com/tsanghan/sctp-ce6-mod3.12/blob/main/asset/images/serverless-deploy-success.PNG)
+![GitHub Action Workflow Pipline](/asset/images/serverless-deploy-success-mod3.14.PNG)
 
 To `destroy` all AWS resources created by the workflow pipeline
 ```
