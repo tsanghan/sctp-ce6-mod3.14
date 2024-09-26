@@ -32,8 +32,8 @@ Finally, create `.github/workflow/ci.yaml` for pipeline.
 GitHub Action Workflow Pipline implemented is as follow;
 1) `pre-deploy`
 2) `install-dependancies`
-3) `npm-audit`
-4) `code-unit-testing`
+3) `unit-testing`
+4) `scan-dependancies`
 5) `deploy`
 
 ![GitHub Action Workflow Pipline](/asset/images/serverless-deploy-success-mod3.14.PNG)

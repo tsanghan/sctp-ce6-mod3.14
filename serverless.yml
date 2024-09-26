@@ -1,6 +1,6 @@
 # "service" is the name of this project. This will also be added to your AWS resource names.
 
-service: tsanghan-ce6-dynamodb-sqs-service
+service: tsanghan-ce6-dynamodb-sqs-service-mod314
 
 frameworkVersion: '4'
 
@@ -54,8 +54,8 @@ resources:
         QueueName: ${self:custom.sqsQueueName}
 
 custom:
-  dynamodbTableName: tsanghan-ce6-dynamodb-table-${self:provider.stage}
-  sqsQueueName: tsanghan-ce6-sqs-queue-${self:provider.stage}
+  dynamodbTableName: tsanghan-ce6-dynamodb-table-mod314-${self:provider.stage}
+  sqsQueueName: tsanghan-ce6-sqs-queue-mod314-${self:provider.stage}
 
 plugins:
   - serverless-offline
